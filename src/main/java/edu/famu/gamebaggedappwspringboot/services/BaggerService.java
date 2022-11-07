@@ -10,6 +10,7 @@ import java.util.concurrent.ExecutionException;
 
 @Service
 public class BaggerService {
+    //TODO: Change the method name
     public ArrayList<Bagger> getCategories() throws ExecutionException, InterruptedException {
         ArrayList<Bagger> baggers = new ArrayList<>();
 
@@ -36,8 +37,9 @@ public class BaggerService {
         //database connection object
         Firestore db = FirestoreClient.getFirestore();
 
+        //TODO: This can't be written this way.Where you have email should be an id. If you want to query by email, you need to do it as a where clause
         //asynchronously retrieve document
-        DocumentReference docRef = db.collection("bagger").document(email);
+        DocumentReference docRef = db.collection("bagger").document(email); 
         // asynchronously retrieve the document
         ApiFuture<DocumentSnapshot> future = docRef.get();
 
