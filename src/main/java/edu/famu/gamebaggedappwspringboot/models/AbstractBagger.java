@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class admin {
+public abstract class AbstractBagger {
     @DocumentId
-    private String id;
+    private String email;
     private String uid;
     private String firstName;
     private String lastName;

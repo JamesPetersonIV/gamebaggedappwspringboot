@@ -11,9 +11,9 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class customer {
+public class Customer {
     @DocumentId
-    protected String id;
+    protected String email;
     protected String uid;
     protected String firstName;
     protected String lastName;

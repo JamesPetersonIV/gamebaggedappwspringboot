@@ -11,7 +11,7 @@ import java.util.HashMap;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public abstract class abstractOrders {
+public abstract class AbstractOrders {
 
         @DocumentId
         private HashMap cashout;
