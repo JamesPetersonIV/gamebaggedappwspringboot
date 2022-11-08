@@ -12,10 +12,15 @@ import java.util.HashMap;
 @NoArgsConstructor
 public class Orders extends AbstractOrders {
 
-    private Bagger bagger;
-    public Orders( HashMap <Double,Double> cashout, String customer,HashMap <Timestamp, Timestamp> deliverywindow, HashMap <GeoPoint, GeoPoint> destinations, String product, String store, Bagger bagger) {
-        super(cashout, customer, deliverywindow, destinations, product, store); //calling parent constructor
+    private Users customer;
+    private Users bagger;
+    private Product product;
+
+    public Orders( String id, HashMap <Double,Double> cashout, HashMap <Timestamp, Timestamp> deliverywindow, HashMap <GeoPoint, GeoPoint> destinations, String store, Users bagger, Users customer, Product product) {
+        super(id, cashout, deliverywindow, destinations, store); //calling parent constructor
         this.bagger = bagger;
+        this.customer = customer;
+        this.product = product;
     }
 
 }

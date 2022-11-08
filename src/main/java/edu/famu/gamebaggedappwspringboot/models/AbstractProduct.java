@@ -9,10 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class AbstractBagger {
+
+public abstract class AbstractProduct {
     @DocumentId
-    private String email;
-    private String uid;
-    private String firstName;
-    private String lastName;
+    protected String id;
+    protected String name;
+    protected String description;
+    protected Double price;
 }

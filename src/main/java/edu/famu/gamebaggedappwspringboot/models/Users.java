@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor //creates constructor with all values automatically
 @NoArgsConstructor //creates no argument constructor automatically
 
-public class users {
-    @DocumentId //denotes that thie variable is storing the document id value
+public class Users {
+    @DocumentId //denotes that this variable is storing the document id value
+    private String id;
     private String name;
     private String role;
     private String uid;

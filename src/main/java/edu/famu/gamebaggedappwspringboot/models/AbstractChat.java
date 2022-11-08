@@ -1,18 +1,22 @@
 package edu.famu.gamebaggedappwspringboot.models;
 
-
 import com.google.cloud.firestore.annotation.DocumentId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
+
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin {
+
+public abstract class AbstractChat {
     @DocumentId
-    private String email;
-    private String uid;
-    private String firstName;
-    private String lastName;
+    protected String id;
+    protected String post;
+    protected String sentAt;
+    protected String sentBy;
+    protected String chatText;
 }

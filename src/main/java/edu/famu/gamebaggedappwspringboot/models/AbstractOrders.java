@@ -14,10 +14,9 @@ import java.util.HashMap;
 public abstract class AbstractOrders {
 
         @DocumentId
-        private HashMap cashout;
-        private String customer;
-        private HashMap deliverywindow;
-        private HashMap destinations;
-        private String product;
-        private String store;
+        protected String id;
+        protected HashMap cashout;
+        protected HashMap deliverywindow;
+        protected HashMap destinations;
+        protected String store;
 }
