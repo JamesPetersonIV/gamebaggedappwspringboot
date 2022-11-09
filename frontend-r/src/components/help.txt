@@ -1,0 +1,97 @@
+import React from "react";
+import {Image, Nav, Navbar} from "react-bootstrap";
+import cart_image from "../assets/cart_image.png";
+import store_icon from "../assets/GOATED_OFF.png"
+class Header extends React.Component {
+
+    async handleLogout(evt)
+    {
+        evt.preventDefault()
+        let currentUser = localStorage.getItem("user");
+        if (!currentUser)
+        {
+            window.location.replace("/");
+        }
+        else{
+            localStorage.clear();
+            window.location.replace("/");
+        }
+    }
+    render() {
+        //populating currentUser with user info
+        const { currentUser } = this.context;
+        //similar to privateRoute
+        if(currentUser!= null && currentUser.length > 0)
+        {
+            localStorage.setItem("user", JSON.stringify(currentUser));
+        }
+
+        //gettin and storing
+        let localStorageItem = localStorage.getItem("user");
+
+        //no user stay on home page
+        if  (!localStorageItem )
+        {
+            return (
+                <Navbar className="justify-content-center">
+                    <Nav.Link  href="/register">REGISTER</Nav.Link>
+                    <Nav.Link href="/">STORE</Nav.Link>
+                    <Navbar.Brand  pullLeft href="/"><Image src={store_icon } alt="Logo"/></Navbar.Brand>
+                    <Nav.Link  href="/login"> LOGIN </Nav.Link>
+                    <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
+                </Navbar>
+            )
+        }
+        else if (JSON.parse(localStorageItem).Account_Access === "ADMIN") {
+            return (
+                <Navbar className="justify-content-center">
+                    <Nav.Link  href="/orders">Orders</Nav.Link>
+                    <Nav.Link href="/">Store</Nav.Link>
+                    <Nav.Link  href="/admin">Users</Nav.Link>
+                    <Navbar.Brand  pullLeft href="/"><Image src={store_icon} alt="Logo"/></Navbar.Brand>
+                    <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
+                    <Nav.Link  onClick={this.handleLogout}>Logout</Nav.Link>
+                </Navbar>
+            )
+        }
+        else if (JSON.parse(localStorageItem).Account_Access === "SELLER")
+        {
+            return (
+                <Navbar className="justify-content-center">
+                    <Nav.Link  href="/orders">Orders</Nav.Link>
+                    <Nav.Link href = "/seller" > Sneaks </Nav.Link>
+                    <Nav.Link href="/">Store</Nav.Link>
+                    <Navbar.Brand  pullLeft href="/"><Image src={store_icon} alt="Logo"/></Navbar.Brand>
+                    <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
+                    <Nav.Link  onClick={this.handleLogout}>Logout</Nav.Link>
+                </Navbar>
+            )
+        }
+        else{
+            return (
+                <Navbar className="justify-content-center">
+                    <Nav.Link href = "/orders" > Orders </Nav.Link>
+                    <Nav.Link href="/">Store</Nav.Link>
+                    <Navbar.Brand  pullLeft href="/"><Image src={store_icon} alt="Logo"/></Navbar.Brand>
+                    <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
+                    <Nav.Link  onClick={this.handleLogout}>Logout</Nav.Link>
+                </Navbar>
+            )
+        }
+
+    }
+}
+
+
+
+export default Header;
+
+//passing on info/authCon related
+function route({children})
+{
+    //gettin from loacl storage and into placing userid info
+    let localStorageItem = localStorage.getItem("user")
+
+    //parsing;splitting/going inside localStorage and taking out  field info
+    return (JSON.parse(localStorageItem).Account_Type === "D") ? children : <Navigate to={"/login"}/>
+}

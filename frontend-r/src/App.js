@@ -1,24 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import {AuthProvider} from "./context/AuthContext";
+import {Route, Routes} from "react-router-dom";
+import Gbindex from "./pages/Gbindex";
+import Register from "./pages/Register";
+import SignIn from "./pages/SignIn";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <AuthProvider>
+        <div className="App">
+          <Routes>
+            <Route path="index" exact element={<Gbindex/>}/>
+            <Route path="signup" exact element={<Register/>}/>
+            <Route path="signin" exact element={<SignIn/>}/>
+          </Routes>
+        </div>
+      </AuthProvider>
   );
 }
 
