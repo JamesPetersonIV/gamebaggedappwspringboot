@@ -14,6 +14,7 @@ import java.util.concurrent.ExecutionException;
 
 public class CategoryService {
 
+    //gets all services
     public ArrayList<Category> getCategories() throws ExecutionException, InterruptedException {
         ArrayList<Category> categories = new ArrayList<>();
 

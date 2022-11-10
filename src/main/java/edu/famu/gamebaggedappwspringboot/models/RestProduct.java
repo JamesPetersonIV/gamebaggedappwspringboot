@@ -3,9 +3,11 @@ package edu.famu.gamebaggedappwspringboot.models;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.cloud.FirestoreClient;
+import lombok.NoArgsConstructor;
 
 import javax.print.Doc;
 
+@NoArgsConstructor
 public class RestProduct extends AbstractProduct {
 
     public RestProduct(String id, String name, String description, Double price, DocumentReference category) {

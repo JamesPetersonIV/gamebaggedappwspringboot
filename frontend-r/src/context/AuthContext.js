@@ -90,12 +90,20 @@ export class AuthProvider extends Component {
         signIn: async (email,password)=>{
 
             const firebaseConfig = {
-                apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+                /*apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
                 authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
                 projectId: process.env.REACT_APP_FIREBASE_PRODUCT_ID,
                 storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
                 messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-                appId: process.env.REACT_APP_FIREBASE_APP_ID
+                appId: process.env.REACT_APP_FIREBASE_APP_ID*/
+                apiKey: "AIzaSyBtEnlbftH8yqweBQEw22DNL7lUOvkCT6E",
+                authDomain: "gamebagged.firebaseapp.com",
+                databaseURL: "https://gamebagged-default-rtdb.firebaseio.com",
+                projectId: "gamebagged",
+                storageBucket: "gamebagged.appspot.com",
+                messagingSenderId: "272734653041",
+                appId: "1:272734653041:web:84644209e72d79b65da9d0",
+                measurementId: "G-WHQT8ZKN19"
             };
 
         // Initialize Firebase
